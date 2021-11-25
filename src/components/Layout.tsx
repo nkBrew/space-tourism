@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import DesktopImage from '../assets/home/background-home-desktop.jpg';
+import Header from './Header';
 import NavBar from './NavBar';
 
 const GlobalStyle = createGlobalStyle`
@@ -32,8 +33,9 @@ const Layout = ({ images }: LayoutProps) => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Background images={images} />
-      <NavBar />
+      <Background images={images}>
+        <Header />
+      </Background>
     </React.Fragment>
   );
 };
