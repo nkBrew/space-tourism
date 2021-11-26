@@ -6,16 +6,22 @@ import CloseIcon from '../assets/shared/icon-close.svg';
 
 const Nav = styled.nav`
   background: hsl(0, 0%, 100%, 0.1);
-  width: 60%;
+  /* width: 60%; */
   backdrop-filter: blur(1rem);
-
+  height: 96px;
+  display: flex;
+  align-items: center;
   @media (max-width: 400px) {
+    display: ${({ show }: { show: boolean }) => (show ? 'flex' : 'none')};
+    /* display: none; */
+    position: fixed;
+    right: 0;
+    top: 0;
     height: 100vh;
     /* width: 60vw; */
-    position: fixed;
-    width: 100%;
+    /* position: fixed; */
+    /* width: 100%; */
     inset: 0 0 0 30%;
-    /* background: none; */
   }
 `;
 
@@ -24,14 +30,14 @@ const NavUl = styled.ul`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 96px;
-  /* padding-left: 100px; */
-
   gap: 3rem;
+
   @media (max-width: 400px) {
-    height: 100vh;
-    padding-top: 10rem;
+    height: 100%;
+    width: 100%;
+    /* padding-top: 10rem; */
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
   }
 `;
@@ -44,6 +50,7 @@ const NavLink = styled.li`
     font-size: 16px;
     letter-spacing: 2.7px;
     text-decoration: none;
+    text-transform: uppercase;
     > span {
       font-weight: bold;
       padding-right: 0.5rem;
@@ -51,44 +58,34 @@ const NavLink = styled.li`
   }
 `;
 
-const CloseLi = styled.li`
-  position: absolute;
-  top: 2rem;
-  right: 200px;
+interface NavBarProps {
+  show: boolean;
+}
 
-  @media (min-width: 400px) {
-    display: none;
-  }
-`;
-
-const NavBar = () => {
+const NavBar = ({ show }: NavBarProps) => {
   return (
-    <Nav>
+    <Nav show={show}>
       <NavUl>
         <NavLink>
           <Link to="/">
-            <span>00</span>HOME
+            <span>00</span>Home
           </Link>
         </NavLink>
         <NavLink>
           <Link to="/destination">
-            <span>01</span>DESTINATION
+            <span>01</span>Destination
           </Link>
         </NavLink>
         <NavLink>
           <Link to="/crew">
-            <span>02</span>CREW
+            <span>02</span>Crew
           </Link>
         </NavLink>
         <NavLink>
           <Link to="/technology">
-            <span>03</span>TECHNOLOGY
+            <span>03</span>Technology
           </Link>
         </NavLink>
-        <CloseLi>
-          <CloseIcon />
-        </CloseLi>
-        {/* <CloseIcon /> */}
       </NavUl>
     </Nav>
   );

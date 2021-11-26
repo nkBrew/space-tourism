@@ -8,11 +8,14 @@ const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
   min-height:100vh;
+  font-family: Barlow;
+  color:white;
   /* background-color: red; */
 }
 `;
 interface LayoutProps {
   images: { desktop: string; mobile: string; tablet: string };
+  children?: React.ReactNode;
 }
 
 const Background = styled.div<LayoutProps>`
@@ -29,12 +32,13 @@ const Background = styled.div<LayoutProps>`
     background-size: 100vw 100vh;
   }
 `;
-const Layout = ({ images }: LayoutProps) => {
+const Layout = ({ images, children }: LayoutProps) => {
   return (
     <React.Fragment>
       <GlobalStyle />
       <Background images={images}>
         <Header />
+        {children}
       </Background>
     </React.Fragment>
   );
