@@ -20,15 +20,37 @@ const InnerContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    top: 0px;
+  }
+
   @media (max-width: 400px) {
     /* display: contents; */
     top: 24px;
     left: 24px;
     right: 24px;
+  }
+`;
 
-    /* flow-direction: column; */
-    /* justify-content: flex-start; */
-    /* align-items: flex-start; */
+const IconWrapper = styled.div`
+  @media (min-width: 769px) {
+    position: relative;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    &:after {
+      content: '';
+      color: red;
+      background: hsl(0, 0%, 100%, 0.25);
+      /* width: 70%; */
+      left: 150px;
+      height: 1px;
+      right: -10px;
+      z-index: 1;
+      position: absolute;
+    }
   }
 `;
 
@@ -39,29 +61,6 @@ const StyledIcon = styled(Icon)`
     left: 24px; */
   }
 `;
-
-const IconWrapper = styled.div`
-  /* position: relative;
-  flex: 2;
-  display: flex;
-  align-items: center; */
-  @media (max-width: 400px) {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-  }
-  &:after {
-    /* content: '';
-    background: hsl(0, 0%, 100%, 0.25);
-    width: 70%;
-    left: 150px;
-    height: 1px;
-    right: -20px;
-    z-index: 1;
-    position: absolute; */
-  }
-`;
-
 const NavButton = styled.button`
   display: none;
   z-index: 9999;
@@ -72,14 +71,21 @@ const NavButton = styled.button`
   }
 `;
 
-const Header = () => {
+interface HeaderProps {
+  currentPage: string;
+}
+
+const Header = ({ currentPage }: HeaderProps) => {
   const [show, setShow] = useState(false);
   return (
     <StyledHeader>
       <InnerContainer>
-        <StyledIcon />
+        {/* <StyledIcon /> */}
+        <IconWrapper>
+          <Icon />
+        </IconWrapper>
         <NavButton onClick={() => setShow(!show)}>{show ? <CloseIcon /> : <HamburgerIcon />}</NavButton>
-        <NavBar show={show} />
+        <NavBar currentPage={currentPage} show={show} />
       </InnerContainer>
     </StyledHeader>
   );
