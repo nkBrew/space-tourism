@@ -39,6 +39,22 @@ interface BackgroundProps {
   images: ImagesType;
 }
 
+const MainContainer = styled.div`
+  /* padding-top: 200px; */
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+`;
+
+const HeaderSpacer = styled.div`
+  height: 200px;
+  flex: 0 1 auto;
+`;
+
+const MainContent = styled.div`
+  flex: 1 1 auto;
+`;
+
 const Background = styled.div<BackgroundProps>`
   background: url(${({ images }) => images.desktop}) no-repeat center center fixed;
   /* position: absolute; */
@@ -66,7 +82,12 @@ const Layout = ({ images, currentPage, children }: LayoutProps) => {
       <GlobalStyle images={images} />
       {/* <Background images={images}> */}
       <Header currentPage={currentPage} />
-      {children}
+
+      <MainContainer>
+        <HeaderSpacer />
+        <MainContent>{children}</MainContent>
+      </MainContainer>
+
       {/* </Background> */}
     </React.Fragment>
   );
