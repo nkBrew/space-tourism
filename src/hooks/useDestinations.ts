@@ -9,7 +9,7 @@ export interface IDestination {
   distance: string;
   images: {
     png: any;
-    webp: string;
+    webp: any;
   };
   name: string;
   travel: string;
@@ -24,6 +24,11 @@ export const useDestinations = () => {
           distance
           images {
             png {
+              childImageSharp {
+                gatsbyImageData(placeholder: NONE)
+              }
+            }
+            webp {
               childImageSharp {
                 gatsbyImageData(placeholder: NONE)
               }

@@ -254,7 +254,7 @@ const Destination = () => {
         <DestinationContentContainer>
           <ContentItem>
             <GatsbyImageWrapper>
-              <GatsbyImage image={getImage(destination.images.png)!} alt="Moon" />
+              <GatsbyImage image={getImage(destination.images.webp)!} alt="Moon" />
             </GatsbyImageWrapper>
           </ContentItem>
           <ContentItem>
