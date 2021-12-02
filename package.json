@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "space-tourism",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "My solution for the front end mentor space-tourism challenge",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Nicholas Brunoro <nicholasjwb@gmail.com>",
   "dependencies": {
     "@fontsource/barlow": "^4.5.0",
     "@fontsource/barlow-condensed": "^4.5.0",

@@ -17,17 +17,43 @@ interface DataJsonQueryType {
   dataJson: DataJsonType;
 }
 
-export const useDataJson = (): DataJsonType => {
-  const { dataJson }: DataJsonQueryType = useStaticQuery(graphql`
-    query DataJsonQuery {
-      dataJson {
-        crew {
-          bio
-          name
-          role
-        }
-      }
-    }
-  `);
-  return dataJson;
-};
+// export const useDataJson = () => {
+//   const data = useStaticQuery(graphql`
+//     {
+//       allDataJson {
+//         edges {
+//           node {
+//             crew {
+//               name
+//               role
+//               bio
+//               images {
+//                 png
+//                 webp
+//               }
+//             }
+//             destinations {
+//               name
+//               description
+//               distance
+//               travel
+//               images {
+//                 png
+//                 webp
+//               }
+//             }
+//             technology {
+//               description
+//               name
+//               images {
+//                 portrait
+//                 landscape
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `);
+//   return data;
+// };
