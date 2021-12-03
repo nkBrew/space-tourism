@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import DesktopImage from '../assets/home/background-home-desktop.jpg';
 import Header from './Header';
+import { breakpoints } from './utilities/breakpoint';
 
 const GlobalStyle = createGlobalStyle<BackgroundProps>`
 body {
@@ -49,6 +50,10 @@ const MainContainer = styled.div`
 const HeaderSpacer = styled.div`
   height: 200px;
   flex: 0 1 auto;
+
+  @media (max-width: ${breakpoints.lg}) {
+    height: 120px;
+  }
 `;
 
 const MainContent = styled.div`

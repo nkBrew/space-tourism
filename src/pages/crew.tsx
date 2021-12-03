@@ -6,12 +6,16 @@ import DesktopImage from '../assets/crew/background-crew-desktop.jpg';
 import TabletImage from '../assets/crew/background-crew-tablet.jpg';
 import MobileImage from '../assets/crew/background-crew-mobile.jpg';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { breakpoints } from '../components/utilities/breakpoint';
 
 const CrewContentContainer = styled.div`
   margin: 0 15%;
   display: flex;
   flex-direction: column;
   height: 100%;
+  @media (max-width: ${breakpoints.lg}) {
+    overflow: hidden;
+  }
 `;
 const CrewHeader = styled.div`
   font-family: Barlow Condensed;
@@ -30,6 +34,17 @@ const CrewHeader = styled.div`
     mix-blend-mode: normal;
     opacity: 0.25;
   }
+
+  @media (max-width: ${breakpoints.lg}) {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 3.375px;
+    > span {
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 3.375px;
+    }
+  }
 `;
 
 const CrewDetailsContainer = styled.div`
@@ -37,6 +52,13 @@ const CrewDetailsContainer = styled.div`
   display: flex;
   gap: 3rem;
   height: 100%;
+
+  @media (max-width: ${breakpoints.lg}) {
+    padding-top: 5%;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-self: center; */
+  }
 `;
 
 const CrewInnerDetailsContainer = styled.div`
@@ -44,6 +66,17 @@ const CrewInnerDetailsContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   flex: 1 50%;
+  > * {
+    flex: 1;
+  }
+
+  @media (max-width: ${breakpoints.lg}) {
+    gap: 0.5rem;
+    > * {
+      text-align: center;
+    }
+    flex: 0 auto;
+  }
 `;
 
 const RoleHeading = styled.div`
@@ -53,11 +86,15 @@ const RoleHeading = styled.div`
   font-size: 32px;
   line-height: 37px;
   text-transform: uppercase;
-
+  flex: 0;
   color: #ffffff;
 
   mix-blend-mode: normal;
   opacity: 0.5;
+  @media (max-width: ${breakpoints.lg}) {
+    font-size: 24px;
+    line-height: 28px;
+  }
 `;
 
 const NameHeading = styled.div`
@@ -67,8 +104,14 @@ const NameHeading = styled.div`
   font-size: 56px;
   line-height: 64px;
   text-transform: uppercase;
-
+  flex: 1 4;
   color: #ffffff;
+  /* flex: 1; */
+  @media (max-width: ${breakpoints.lg}) {
+    font-size: 40px;
+    line-height: 46px;
+    flex: 0;
+  }
 `;
 
 const CrewDetailsP = styled.p`
@@ -77,13 +120,22 @@ const CrewDetailsP = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 32px;
-  flex-basis: 40%;
+  /* flex-basis: 40%; */
+  flex: 2;
   color: #d0d6f9;
+  @media (max-width: ${breakpoints.lg}) {
+    font-size: 16px;
+    line-height: 28px;
+    flex: 0.5;
+  }
 `;
 
 const GatsbyImageContainer = styled.div`
   flex: 1 50%;
   position: relative;
+  /* @media (max-width: ${breakpoints.lg}) {
+    position: static;
+  } */
 `;
 
 const GatsbyImageWrapper = styled.div`
@@ -91,6 +143,23 @@ const GatsbyImageWrapper = styled.div`
   z-index: -1000;
   position: absolute;
   bottom: 0;
+  width: 600px;
+  @media (max-width: ${breakpoints.lg}) {
+    /* position: static; */
+    /* width: 100%; */
+    /* bottom: -50px; */
+    top: -50px;
+    width: 400px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    /* height: 200px; */
+    /* margin: auto; */
+    /* margin-left: 15%; */
+    /* margin-right: 15%; */
+    /* padding: 20%; */
+  }
 `;
 
 const CrewCircle = styled.div<CrewCircleProps>`
@@ -110,6 +179,11 @@ const CrewCircle = styled.div<CrewCircleProps>`
 const CrewBar = styled.div`
   display: flex;
   gap: 2rem;
+
+  @media (max-width: ${breakpoints.lg}) {
+    justify-content: center;
+    flex: 0;
+  }
 `;
 
 interface CrewCircleProps {
@@ -144,9 +218,11 @@ const Crew = () => {
             <CrewBar>{renderCrewCircles()}</CrewBar>
           </CrewInnerDetailsContainer>
           <GatsbyImageContainer>
+            {/* <div style={{ overflow: 'hidden' }}> */}
             <GatsbyImageWrapper>
               <GatsbyImage image={getImage(crewMan.images.webp)!} alt="none" />
             </GatsbyImageWrapper>
+            {/* </div> */}
           </GatsbyImageContainer>
         </CrewDetailsContainer>
       </CrewContentContainer>

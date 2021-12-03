@@ -23,7 +23,7 @@ export const useCrew = (): ICrewDict => {
           images {
             webp {
               childImageSharp {
-                gatsbyImageData(layout: FIXED)
+                gatsbyImageData(layout: CONSTRAINED)
               }
             }
           }
