@@ -5,7 +5,7 @@ import { useCrew } from '../hooks/use-crew';
 import DesktopImage from '../assets/crew/background-crew-desktop.jpg';
 import TabletImage from '../assets/crew/background-crew-tablet.jpg';
 import MobileImage from '../assets/crew/background-crew-mobile.jpg';
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { breakpoints } from '../components/utilities/breakpoint';
 
 const CrewContentContainer = styled.div`
@@ -14,7 +14,6 @@ const CrewContentContainer = styled.div`
   flex-direction: column;
   height: 100%;
   @media (max-width: ${breakpoints.lg}) {
-    /* overflow: hidden; */
   }
 
   @media (max-width: ${breakpoints.sm}) {
@@ -63,8 +62,6 @@ const CrewDetailsContainer = styled.div`
   @media (max-width: ${breakpoints.lg}) {
     padding-top: 5%;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-self: center; */
   }
   @media (max-width: ${breakpoints.sm}) {
     gap: 1rem;
@@ -207,17 +204,12 @@ const GatsbyImageContainer = styled.div`
 `;
 
 const GatsbyImageWrapper = styled.div<GatsbyImageWrapperProps>`
-  /* width: 30%; */
   position: absolute;
   bottom: 0;
-  /* width: 600px; */
+  width: 150%;
+  z-index: -1000;
   @media (max-width: ${breakpoints.lg}) {
-    /* position: static; */
-    /* width: 100%; */
-    /* bottom: -20px; */
-    /* top: -50px; */
-    width: ${({ height, width }) => (width / height) * 44 + 'vh'};
-    /* height: 500px; */
+    width: ${({ height, width }) => (width / height) * 50 + 'vh'};
 
     left: 0;
     right: 0;

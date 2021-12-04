@@ -10,10 +10,8 @@ body {
   background: url(${({ images }) => images.desktop}) no-repeat center center fixed;
   background-size: cover;
 
-  /* min-width:100vw;  */
   font-family: Barlow;
   color:white;
-  /* background-color: red; */
   @media (max-width: ${breakpoints.lg}}) {
     background-image: url(${({ images }) => images.tablet});
   }
@@ -43,7 +41,6 @@ interface BackgroundProps {
 }
 
 const MainContainer = styled.div`
-  /* padding-top: 200px; */
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -66,40 +63,15 @@ const MainContent = styled.div`
   flex: 1 1 auto;
 `;
 
-const Background = styled.div<BackgroundProps>`
-  background: url(${({ images }) => images.desktop}) no-repeat center center fixed;
-  /* position: absolute; */
-  /* width: 100%; */
-  /* height: 100%; */
-  /* top: 0; */
-  background-size: cover;
-  /* height: 100vh; */
-
-  @media (max-width: ${breakpoints.lg}) {
-    background-image: url(${({ images }) => images.tablet});
-    /* background-size: cover; */
-    /* height: 100%; */
-    /* width: 100vw; */
-  }
-  @media (max-width: ${breakpoints.sm}) {
-    background-image: url(${({ images }) => images.mobile});
-    /* background-size: cover; */
-    /* height: 100%; */
-  }
-`;
 const Layout = ({ images, currentPage, children }: LayoutProps) => {
   return (
     <React.Fragment>
       <GlobalStyle images={images} />
-      {/* <Background images={images}> */}
       <Header currentPage={currentPage} />
-
       <MainContainer>
         <HeaderSpacer />
         <MainContent>{children}</MainContent>
       </MainContainer>
-
-      {/* </Background> */}
     </React.Fragment>
   );
 };

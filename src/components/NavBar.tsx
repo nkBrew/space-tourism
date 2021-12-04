@@ -28,7 +28,6 @@ const NavUl = styled.ul`
   list-style-type: none;
   display: flex;
   justify-content: flex-start;
-  /* align-items: center; */
   gap: 3rem;
   height: 100%;
   width: 100%;

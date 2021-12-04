@@ -37,7 +37,6 @@ const DestinationContentContainer = styled.div`
 
 const ContentItem = styled.div`
   flex: 1;
-  /* background: red; */
 `;
 
 const DestinationDetailsContainer = styled.div`
@@ -54,7 +53,6 @@ const DestinationHeading = styled.div`
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  /* identical to box height */
 
   letter-spacing: 4.725px;
   color: #ffffff;
@@ -150,7 +148,6 @@ const DestinationDetailsHeading = styled.div`
   font-weight: normal;
   font-size: 100px;
   line-height: 115px;
-  /* identical to box height */
   text-transform: uppercase;
   color: #ffffff;
 
@@ -203,7 +200,6 @@ const DetailsStatsHeading = styled.div`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  /* identical to box height */
 
   letter-spacing: 2.3625px;
   text-transform: uppercase;
@@ -217,7 +213,6 @@ const DetailsStatsP = styled.p`
   font-weight: normal;
   font-size: 28px;
   line-height: 32px;
-  /* identical to box height */
   margin-top: 10px;
   text-transform: uppercase;
 

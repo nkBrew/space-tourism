@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import DesktopImage from '../assets/home/background-home-desktop.jpg';
