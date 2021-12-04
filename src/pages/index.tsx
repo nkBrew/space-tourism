@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import DesktopImage from '../assets/home/background-home-desktop.jpg';
 import MobileImage from '../assets/home/background-home-mobile.jpg';
 import TabletImage from '../assets/home/background-home-tablet.jpg';
+import { breakpoints } from '../components/utilities/breakpoint';
 
 const images = { desktop: DesktopImage, mobile: MobileImage, tablet: TabletImage };
 
@@ -68,7 +69,7 @@ const ContentContainer = styled.div`
     padding-top: 20vh;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     padding-top: 112px;
     flex-direction: column;
     margin: 0 0.5rem;
@@ -115,7 +116,7 @@ const ExploreCircle = styled.div`
     color: #0b0d17;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     height: 150px;
     width: 150px;
     margin-top: 6vh;

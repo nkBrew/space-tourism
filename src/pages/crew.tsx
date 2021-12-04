@@ -5,7 +5,7 @@ import { useCrew } from '../hooks/use-crew';
 import DesktopImage from '../assets/crew/background-crew-desktop.jpg';
 import TabletImage from '../assets/crew/background-crew-tablet.jpg';
 import MobileImage from '../assets/crew/background-crew-mobile.jpg';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { breakpoints } from '../components/utilities/breakpoint';
 
 const CrewContentContainer = styled.div`
@@ -14,7 +14,11 @@ const CrewContentContainer = styled.div`
   flex-direction: column;
   height: 100%;
   @media (max-width: ${breakpoints.lg}) {
-    overflow: hidden;
+    /* overflow: hidden; */
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
+    margin: 0 5%;
   }
 `;
 const CrewHeader = styled.div`
@@ -45,6 +49,9 @@ const CrewHeader = styled.div`
       letter-spacing: 3.375px;
     }
   }
+  @media (max-width: ${breakpoints.sm}) {
+    text-align: center;
+  }
 `;
 
 const CrewDetailsContainer = styled.div`
@@ -59,6 +66,9 @@ const CrewDetailsContainer = styled.div`
     /* justify-content: center; */
     /* align-self: center; */
   }
+  @media (max-width: ${breakpoints.sm}) {
+    gap: 1rem;
+  }
 `;
 
 const CrewInnerDetailsContainer = styled.div`
@@ -70,12 +80,18 @@ const CrewInnerDetailsContainer = styled.div`
     flex: 1;
   }
 
+  /* justify-content: space-between; */
   @media (max-width: ${breakpoints.lg}) {
     gap: 0.5rem;
     > * {
       text-align: center;
     }
-    flex: 0 auto;
+    flex: 0 0 40%;
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
+    order: 2;
+    justify-content: flex-start;
   }
 `;
 
@@ -95,6 +111,11 @@ const RoleHeading = styled.div`
     font-size: 24px;
     line-height: 28px;
   }
+  @media (max-width: ${breakpoints.sm}) {
+    order: 1;
+    font-size: 16px;
+    line-height: 18px;
+  }
 `;
 
 const NameHeading = styled.div`
@@ -104,13 +125,17 @@ const NameHeading = styled.div`
   font-size: 56px;
   line-height: 64px;
   text-transform: uppercase;
-  flex: 1 4;
+  flex: 0;
+
   color: #ffffff;
-  /* flex: 1; */
   @media (max-width: ${breakpoints.lg}) {
     font-size: 40px;
     line-height: 46px;
-    flex: 0;
+  }
+  @media (max-width: ${breakpoints.sm}) {
+    order: 2;
+    font-size: 24px;
+    line-height: 28px;
   }
 `;
 
@@ -126,39 +151,13 @@ const CrewDetailsP = styled.p`
   @media (max-width: ${breakpoints.lg}) {
     font-size: 16px;
     line-height: 28px;
-    flex: 0.5;
+    flex: 0 0 40%;
+    margin: 0;
   }
-`;
-
-const GatsbyImageContainer = styled.div`
-  flex: 1 50%;
-  position: relative;
-  /* @media (max-width: ${breakpoints.lg}) {
-    position: static;
-  } */
-`;
-
-const GatsbyImageWrapper = styled.div`
-  /* width: 30%; */
-  z-index: -1000;
-  position: absolute;
-  bottom: 0;
-  width: 600px;
-  @media (max-width: ${breakpoints.lg}) {
-    /* position: static; */
-    /* width: 100%; */
-    /* bottom: -50px; */
-    top: -50px;
-    width: 400px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    /* height: 200px; */
-    /* margin: auto; */
-    /* margin-left: 15%; */
-    /* margin-right: 15%; */
-    /* padding: 20%; */
+  @media (max-width: ${breakpoints.sm}) {
+    order: 3;
+    font-size: 15px;
+    line-height: 25px;
   }
 `;
 
@@ -174,21 +173,66 @@ const CrewCircle = styled.div<CrewCircleProps>`
     opacity: 0.5;
     transition: 0.5s;
   }
+  @media (max-width: ${breakpoints.sm}) {
+    height: 15px;
+    width: 15px;
+  }
 `;
 
 const CrewBar = styled.div`
   display: flex;
   gap: 2rem;
-
+  flex: 0 1;
   @media (max-width: ${breakpoints.lg}) {
     justify-content: center;
-    flex: 0;
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
   }
 `;
 
 interface CrewCircleProps {
   selected: boolean;
   onClick: () => void;
+}
+
+const GatsbyImageContainer = styled.div`
+  flex: 1 0 40%;
+  position: relative;
+
+  @media (max-width: ${breakpoints.sm}) {
+    flex: 0 0 40%;
+    border-bottom: 1px solid #383b4b;
+  }
+`;
+
+const GatsbyImageWrapper = styled.div<GatsbyImageWrapperProps>`
+  /* width: 30%; */
+  position: absolute;
+  bottom: 0;
+  /* width: 600px; */
+  @media (max-width: ${breakpoints.lg}) {
+    /* position: static; */
+    /* width: 100%; */
+    /* bottom: -20px; */
+    /* top: -50px; */
+    width: ${({ height, width }) => (width / height) * 44 + 'vh'};
+    /* height: 500px; */
+
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
+    bottom: 0;
+    width: ${({ height, width }) => (width / height) * 33 + 'vh'};
+    order: 1;
+  }
+`;
+interface GatsbyImageWrapperProps {
+  width: number;
+  height: number;
 }
 
 const backgroundImages = { desktop: DesktopImage, tablet: TabletImage, mobile: MobileImage };
@@ -203,7 +247,8 @@ const Crew = () => {
       <CrewCircle key={'crew-circle-' + c.name} selected={selected === c.name} onClick={() => setSelected(c.name)} />
     ));
   };
-
+  const image = getImage(crewMan.images.webp);
+  console.log(image?.height);
   return (
     <Layout currentPage="Crew" images={backgroundImages}>
       <CrewContentContainer>
@@ -218,11 +263,11 @@ const Crew = () => {
             <CrewBar>{renderCrewCircles()}</CrewBar>
           </CrewInnerDetailsContainer>
           <GatsbyImageContainer>
-            {/* <div style={{ overflow: 'hidden' }}> */}
-            <GatsbyImageWrapper>
-              <GatsbyImage image={getImage(crewMan.images.webp)!} alt="none" />
-            </GatsbyImageWrapper>
-            {/* </div> */}
+            {image && (
+              <GatsbyImageWrapper height={image.height} width={image.width}>
+                <GatsbyImage image={image} alt="none" />
+              </GatsbyImageWrapper>
+            )}
           </GatsbyImageContainer>
         </CrewDetailsContainer>
       </CrewContentContainer>

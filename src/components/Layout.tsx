@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import DesktopImage from '../assets/home/background-home-desktop.jpg';
 import Header from './Header';
 import { breakpoints } from './utilities/breakpoint';
 
@@ -15,13 +14,16 @@ body {
   font-family: Barlow;
   color:white;
   /* background-color: red; */
-  @media (max-width: 800px) {
+  @media (max-width: ${breakpoints.lg}}) {
     background-image: url(${({ images }) => images.tablet});
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     background-image: url(${({ images }) => images.mobile});
   }
+}
+html {
+  min-height:100vh;
 }
 `;
 
@@ -48,11 +50,15 @@ const MainContainer = styled.div`
 `;
 
 const HeaderSpacer = styled.div`
-  height: 200px;
+  height: 20%;
   flex: 0 1 auto;
 
   @media (max-width: ${breakpoints.lg}) {
     height: 120px;
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
+    height: 80px;
   }
 `;
 
@@ -69,13 +75,13 @@ const Background = styled.div<BackgroundProps>`
   background-size: cover;
   /* height: 100vh; */
 
-  @media (max-width: 800px) {
+  @media (max-width: ${breakpoints.lg}) {
     background-image: url(${({ images }) => images.tablet});
     /* background-size: cover; */
     /* height: 100%; */
     /* width: 100vw; */
   }
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     background-image: url(${({ images }) => images.mobile});
     /* background-size: cover; */
     /* height: 100%; */

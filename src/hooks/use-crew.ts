@@ -1,10 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { IGatsbyImageData, ImageDataLike } from 'gatsby-plugin-image';
 
 interface ICrew {
   bio: string;
   images: {
     png: any;
-    webp: any;
+    webp: ImageDataLike;
   };
   name: string;
   role: string;
@@ -34,6 +35,7 @@ export const useCrew = (): ICrewDict => {
     }
   `);
 
+  console.dir(data);
   const crewDict: ICrewDict = {};
   data.dataJson.crew.forEach((c) => (crewDict[c.name] = c));
   return crewDict;

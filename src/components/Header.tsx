@@ -4,11 +4,9 @@ import NavBar from './NavBar';
 import Icon from '../assets/shared/logo.svg';
 import HamburgerIcon from '../assets/shared/icon-hamburger.svg';
 import CloseIcon from '../assets/shared/icon-close.svg';
+import { breakpoints } from './utilities/breakpoint';
 
 const StyledHeader = styled.header`
-  /* background: blue; */
-  /* padding-left: 55px; */
-  /* padding-top: 40px; */
   position: relative;
 `;
 
@@ -21,12 +19,12 @@ const InnerContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.lg}) {
     top: 0px;
+    left: 5%;
   }
 
-  @media (max-width: 400px) {
-    /* display: contents; */
+  @media (max-width: ${breakpoints.sm}) {
     top: 24px;
     left: 24px;
     right: 24px;
@@ -34,17 +32,15 @@ const InnerContainer = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  @media (min-width: 769px) {
+  flex: 1;
+  @media (min-width: ${breakpoints.lg}) {
     position: relative;
-    width: 100%;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     &:after {
       content: '';
       color: red;
       background: hsl(0, 0%, 100%, 0.25);
-      /* width: 70%; */
       left: 150px;
       height: 1px;
       right: -10px;
@@ -54,19 +50,12 @@ const IconWrapper = styled.div`
   }
 `;
 
-const StyledIcon = styled(Icon)`
-  @media (max-width: 400px) {
-    /* position: absolute; */
-    /* top: 24px;
-    left: 24px; */
-  }
-`;
 const NavButton = styled.button`
   display: none;
   z-index: 9999;
   background: none;
   border: none;
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     display: flex;
   }
 `;
@@ -80,7 +69,6 @@ const Header = ({ currentPage }: HeaderProps) => {
   return (
     <StyledHeader>
       <InnerContainer>
-        {/* <StyledIcon /> */}
         <IconWrapper>
           <Icon />
         </IconWrapper>

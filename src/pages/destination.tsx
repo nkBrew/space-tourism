@@ -6,6 +6,7 @@ import MobileImage from '../assets/destination/background-destination-mobile.jpg
 import { useDestinations } from '../hooks/useDestinations';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { breakpoints } from '../components/utilities/breakpoint';
 
 const backgroundImages = { desktop: DesktopImage, tablet: TabletImage, mobile: MobileImage };
 
@@ -18,7 +19,7 @@ const DestinationContainer = styled.div`
   @media (max-width: 768px) {
     padding-top: 12vh;
   }
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     justify-content: center;
     align-items: center;
   }
@@ -65,7 +66,7 @@ const DestinationHeading = styled.div`
   }
   text-transform: uppercase;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 2.7px;
@@ -84,7 +85,7 @@ const DestinationBar = styled.ul`
     align-items: center;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     margin-top: 25px;
   }
 `;
@@ -121,7 +122,7 @@ const DestinationBarItem = styled.li<DestinationBarItemProps>`
     align-items: center;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     font-size: 14px;
     line-height: 17px;
 
@@ -132,12 +133,12 @@ const DestinationBarItem = styled.li<DestinationBarItemProps>`
 const GatsbyImageWrapper = styled.div`
   padding-top: 10%;
 
-  @media (min-width: 400px) and (max-width: 768px) {
+  @media (min-width: ${breakpoints.sm}) and (max-width: 768px) {
     padding-left: 15%;
     padding-right: 15%;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     padding-left: 20%;
     padding-right: 20%;
   }
@@ -153,7 +154,7 @@ const DestinationDetailsHeading = styled.div`
   text-transform: uppercase;
   color: #ffffff;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     font-size: 56px;
     line-height: 64px;
   }
@@ -167,7 +168,7 @@ const DetailsP = styled.p`
   line-height: 32px;
   color: #d0d6f9;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     font-size: 15px;
     line-height: 25px;
     text-align: center;
@@ -181,7 +182,7 @@ const DetailsStatsContainer = styled.div`
   border-top: 1px solid #383b4b;
   width: 100%;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     margin-top: 10px;
     flex-direction: column;
   }

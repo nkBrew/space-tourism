@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { breakpoints } from './utilities/breakpoint';
 
 const Nav = styled.nav`
   background: hsl(0, 0%, 100%, 0.1);
@@ -8,19 +9,18 @@ const Nav = styled.nav`
   height: 96px;
   display: flex;
   align-items: center;
+  flex: 2;
 
-  @media (min-width: 769px) {
-    width: 100%;
-    padding: 0 10vw 0 5vw;
-  }
+  width: 100%;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     display: ${({ show }: { show: boolean }) => (show ? 'flex' : 'none')};
     position: fixed;
     right: 0;
     top: 0;
     height: 100vh;
     inset: 0 0 0 30%;
+    z-index: 5000;
   }
 `;
 
@@ -28,11 +28,17 @@ const NavUl = styled.ul`
   list-style-type: none;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
   gap: 3rem;
   height: 100%;
+  width: 100%;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.lg}) {
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
     height: 100%;
     width: 100%;
     padding-top: 15rem;
@@ -72,13 +78,13 @@ const NavLink = styled.li<NavLinkProps>`
     bottom: 0;
   }
 
-  @media (min-width: 400px) and (max-width: 768px) {
+  @media (min-width: ${breakpoints.sm}) and (max-width: ${breakpoints.lg}) {
     span {
       display: none;
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: ${breakpoints.sm}) {
     &:after {
       bottom: -10px;
     }
@@ -103,9 +109,7 @@ const LinkDetails = [
 ];
 
 const NavBar = ({ show, currentPage }: NavBarProps) => {
-  console.log(currentPage);
   const renderNavLinks = () => {
-    const navLinks: JSX.Element[] = [];
     return LinkDetails.map((ld) => (
       <NavLink isOnPage={currentPage == ld.title} key={'nav-' + ld.title}>
         <Link to={ld.link}>
@@ -117,29 +121,7 @@ const NavBar = ({ show, currentPage }: NavBarProps) => {
   };
   return (
     <Nav show={show}>
-      <NavUl>
-        {renderNavLinks()}
-        {/* <NavLink>
-          <Link to="/">
-            <span>00</span>Home
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link to="/destination">
-            <span>01</span>Destination
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link to="/crew">
-            <span>02</span>Crew
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link to="/technology">
-            <span>03</span>Technology
-          </Link>
-        </NavLink> */}
-      </NavUl>
+      <NavUl>{renderNavLinks()}</NavUl>
     </Nav>
   );
 };
