@@ -22,7 +22,6 @@ const TechnologyContainer = styled.div`
 `;
 
 const TechnologyDetailsContainer = styled.div`
-  /* height: 100%; */
   display: flex;
   justify-content: space-between;
   > * {
@@ -42,6 +41,10 @@ const TechnologyInnerDetailsWrapper = styled.div`
   gap: 1rem;
   @media (max-width: ${breakpoints.lg}) {
     order: 2;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5%;
+    text-align: center;
   }
 `;
 
@@ -53,11 +56,24 @@ const PageHeading = styled.div`
   color: #ffffff;
   > span {
     font-weight: bold;
-    font-size: 28px;
-    line-height: 34px;
     letter-spacing: 4.725px;
     mix-blend-mode: normal;
     opacity: 0.25;
+  }
+
+  @media (max-width: ${breakpoints.lg}) {
+    margin-bottom: 5%;
+    margin-left: 5%;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+    margin-left: 0;
+    align-self: center;
   }
 `;
 
@@ -68,6 +84,17 @@ const SubHeading = styled.div`
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 2.7px;
+  text-transform: uppercase;
+  color: #d0d6f9;
+
+  @media (max-width: ${breakpoints.sm}) {
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 2.3625px;
+  }
 `;
 
 const MainHeading = styled.div`
@@ -78,6 +105,13 @@ const MainHeading = styled.div`
   line-height: 64px;
   text-transform: uppercase;
   flex: 0;
+
+  @media (max-width: ${breakpoints.sm}) {
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -86,9 +120,16 @@ const Paragraph = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 32px;
-  /* or 178% */
-
   color: #d0d6f9;
+
+  @media (max-width: ${breakpoints.lg}) {
+    text-align: center;
+    margin: 0 10%;
+  }
+  @media (max-width: ${breakpoints.sm}) {
+    font-size: 15px;
+    line-height: 25px;
+  }
 `;
 
 const GatsbyImageContainer = styled.div`
@@ -101,14 +142,7 @@ const GatsbyImageContainer = styled.div`
 `;
 
 const GatsbyImageWrapper = styled.div`
-  /* height: auto; */
-  /* margin: 0; */
-  /* width: 100%; */
-
   @media screen and (min-width: ${breakpoints.lg}) {
-    /* width: 100%; */
-    /* height: 310px; */
-
     .art-directed {
       width: 515px;
       height: 527px;
@@ -135,8 +169,25 @@ const TechCircle = styled.div<TechCircleProps>`
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
-  /* line-height: 37px; */
-  /* letter-spacing: 2px; */
+  transition: 500ms;
+  @media (max-width: ${breakpoints.lg}) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: ${breakpoints.sm}) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  :hover {
+    border-color: #ffffff;
+    transition: 500ms;
+  }
 `;
 
 const TechBar = styled.div`
@@ -144,11 +195,14 @@ const TechBar = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  /* justify-content: space-between; */
   @media (max-width: ${breakpoints.lg}) {
     margin: 0;
     order: 1;
     flex-direction: row;
+    margin-top: 5%;
+  }
+  @media (max-width: ${breakpoints.sm}) {
+    gap: 2rem;
   }
 `;
 
@@ -207,7 +261,7 @@ const Technology = () => {
         <TechnologyDetailsContainer>
           <TechBar>{renderTechCircles()}</TechBar>
           <TechnologyInnerDetailsWrapper>
-            <SubHeading>The Technology...</SubHeading>
+            <SubHeading>The Terminology...</SubHeading>
             <MainHeading>{technology.name}</MainHeading>
             <Paragraph>{technology.description}</Paragraph>
           </TechnologyInnerDetailsWrapper>
