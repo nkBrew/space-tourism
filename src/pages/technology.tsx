@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import styled from 'styled-components';
 import { breakpoints, breakpointsNumerical } from '../components/utilities/breakpoint';
 import { GatsbyImage, getImage, withArtDirection } from 'gatsby-plugin-image';
+import { Helmet } from 'react-helmet';
 
 const backgroundImages = { desktop: DesktopImage, tablet: TabletImage, mobile: MobileImage };
 
@@ -253,28 +254,31 @@ const Technology = () => {
   };
   console.dir(images);
   return (
-    <Layout images={backgroundImages} currentPage="technology">
-      <TechnologyContainer>
-        <PageHeading>
-          <span>03</span> Space Launch 101
-        </PageHeading>
-        <TechnologyDetailsContainer>
-          <TechBar>{renderTechCircles()}</TechBar>
-          <TechnologyInnerDetailsWrapper>
-            <SubHeading>The Terminology...</SubHeading>
-            <MainHeading>{technology.name}</MainHeading>
-            <Paragraph>{technology.description}</Paragraph>
-          </TechnologyInnerDetailsWrapper>
-          {image && (
-            <GatsbyImageContainer>
-              <GatsbyImageWrapper>
-                <GatsbyImage className="art-directed" image={images} alt="none" />
-              </GatsbyImageWrapper>
-            </GatsbyImageContainer>
-          )}
-        </TechnologyDetailsContainer>
-      </TechnologyContainer>
-    </Layout>
+    <>
+      <Helmet title="Technology" />
+      <Layout images={backgroundImages} currentPage="technology">
+        <TechnologyContainer>
+          <PageHeading>
+            <span>03</span> Space Launch 101
+          </PageHeading>
+          <TechnologyDetailsContainer>
+            <TechBar>{renderTechCircles()}</TechBar>
+            <TechnologyInnerDetailsWrapper>
+              <SubHeading>The Terminology...</SubHeading>
+              <MainHeading>{technology.name}</MainHeading>
+              <Paragraph>{technology.description}</Paragraph>
+            </TechnologyInnerDetailsWrapper>
+            {image && (
+              <GatsbyImageContainer>
+                <GatsbyImageWrapper>
+                  <GatsbyImage className="art-directed" image={images} alt="none" />
+                </GatsbyImageWrapper>
+              </GatsbyImageContainer>
+            )}
+          </TechnologyDetailsContainer>
+        </TechnologyContainer>
+      </Layout>
+    </>
   );
 };
 

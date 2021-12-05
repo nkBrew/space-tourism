@@ -7,6 +7,7 @@ import TabletImage from '../assets/crew/background-crew-tablet.jpg';
 import MobileImage from '../assets/crew/background-crew-mobile.jpg';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { breakpoints } from '../components/utilities/breakpoint';
+import { Helmet } from 'react-helmet';
 
 const CrewContentContainer = styled.div`
   margin: 0 15%;
@@ -143,7 +144,7 @@ const CrewDetailsP = styled.p`
   font-size: 18px;
   line-height: 32px;
   /* flex-basis: 40%; */
-  flex: 2;
+  flex: 0 30%;
   color: #d0d6f9;
   @media (max-width: ${breakpoints.lg}) {
     font-size: 16px;
@@ -242,28 +243,31 @@ const Crew = () => {
   const image = getImage(crewMan.images.webp);
   console.log(image?.height);
   return (
-    <Layout currentPage="Crew" images={backgroundImages}>
-      <CrewContentContainer>
-        <CrewHeader>
-          <span>02</span> Meet your Crew
-        </CrewHeader>
-        <CrewDetailsContainer>
-          <CrewInnerDetailsContainer>
-            <RoleHeading>{crewMan.role}</RoleHeading>
-            <NameHeading>{crewMan.name}</NameHeading>
-            <CrewDetailsP>{crewMan.bio}</CrewDetailsP>
-            <CrewBar>{renderCrewCircles()}</CrewBar>
-          </CrewInnerDetailsContainer>
-          <GatsbyImageContainer>
-            {image && (
-              <GatsbyImageWrapper height={image.height} width={image.width}>
-                <GatsbyImage image={image} alt="none" />
-              </GatsbyImageWrapper>
-            )}
-          </GatsbyImageContainer>
-        </CrewDetailsContainer>
-      </CrewContentContainer>
-    </Layout>
+    <>
+      <Helmet title="Crew" />
+      <Layout currentPage="Crew" images={backgroundImages}>
+        <CrewContentContainer>
+          <CrewHeader>
+            <span>02</span> Meet your Crew
+          </CrewHeader>
+          <CrewDetailsContainer>
+            <CrewInnerDetailsContainer>
+              <RoleHeading>{crewMan.role}</RoleHeading>
+              <NameHeading>{crewMan.name}</NameHeading>
+              <CrewDetailsP>{crewMan.bio}</CrewDetailsP>
+              <CrewBar>{renderCrewCircles()}</CrewBar>
+            </CrewInnerDetailsContainer>
+            <GatsbyImageContainer>
+              {image && (
+                <GatsbyImageWrapper height={image.height} width={image.width}>
+                  <GatsbyImage image={image} alt="none" />
+                </GatsbyImageWrapper>
+              )}
+            </GatsbyImageContainer>
+          </CrewDetailsContainer>
+        </CrewContentContainer>
+      </Layout>
+    </>
   );
 };
 

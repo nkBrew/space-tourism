@@ -5,6 +5,7 @@ import DesktopImage from '../assets/home/background-home-desktop.jpg';
 import MobileImage from '../assets/home/background-home-mobile.jpg';
 import TabletImage from '../assets/home/background-home-tablet.jpg';
 import { breakpoints } from '../components/utilities/breakpoint';
+import { Helmet } from 'react-helmet';
 
 const images = { desktop: DesktopImage, mobile: MobileImage, tablet: TabletImage };
 
@@ -16,7 +17,7 @@ const ContentContainer = styled.div`
 
   color: #d0d6f9;
   flex-direction: row;
-  padding-top: 40vh;
+  padding-top: 10vh;
   margin: 0 5rem;
 
   > * {
@@ -64,11 +65,11 @@ const ContentContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding-top: 20vh;
+    padding-top: 5vh;
   }
 
   @media (max-width: ${breakpoints.sm}) {
-    padding-top: 112px;
+    /* padding-top: 112px; */
     flex-direction: column;
     margin: 0 0.5rem;
 
@@ -154,6 +155,7 @@ const IndexPageContent = () => {
 const IndexPage = () => {
   return (
     <div>
+      <Helmet title="Space Tourism" />
       <Layout currentPage="home" images={images}>
         <IndexPageContent />
       </Layout>

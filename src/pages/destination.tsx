@@ -7,17 +7,18 @@ import { useDestinations } from '../hooks/useDestinations';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { breakpoints } from '../components/utilities/breakpoint';
+import { Helmet } from 'react-helmet';
 
 const backgroundImages = { desktop: DesktopImage, tablet: TabletImage, mobile: MobileImage };
 
 const DestinationContainer = styled.div`
-  padding-top: 30vh;
+  /* padding-top: 5vh; */
   margin: 0 auto;
   width: 80%;
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
-    padding-top: 12vh;
+    padding-top: 5vh;
   }
   @media (max-width: ${breakpoints.sm}) {
     justify-content: center;
@@ -242,37 +243,40 @@ const Destination = () => {
   };
 
   return (
-    <Layout currentPage="destination" images={backgroundImages}>
-      <DestinationContainer>
-        <DestinationHeading>
-          <span>01</span> Pick Your Destination
-        </DestinationHeading>
-        <DestinationContentContainer>
-          <ContentItem>
-            <GatsbyImageWrapper>
-              <GatsbyImage image={getImage(destination.images.webp)!} alt="Moon" />
-            </GatsbyImageWrapper>
-          </ContentItem>
-          <ContentItem>
-            <DestinationDetailsContainer>
-              <DestinationBar>{renderDestinationBarItems()}</DestinationBar>
-              <DestinationDetailsHeading>{destination.name}</DestinationDetailsHeading>
-              <DetailsP>{destination.description}</DetailsP>
-              <DetailsStatsContainer>
-                <DetailsStatsItem>
-                  <DetailsStatsHeading>Avg Distance</DetailsStatsHeading>
-                  <DetailsStatsP> {destination.distance}</DetailsStatsP>
-                </DetailsStatsItem>
-                <DetailsStatsItem>
-                  <DetailsStatsHeading>Est. Travel Time</DetailsStatsHeading>
-                  <DetailsStatsP>{destination.travel}</DetailsStatsP>
-                </DetailsStatsItem>
-              </DetailsStatsContainer>
-            </DestinationDetailsContainer>
-          </ContentItem>
-        </DestinationContentContainer>
-      </DestinationContainer>
-    </Layout>
+    <>
+      <Helmet title="Destination" />
+      <Layout currentPage="destination" images={backgroundImages}>
+        <DestinationContainer>
+          <DestinationHeading>
+            <span>01</span> Pick Your Destination
+          </DestinationHeading>
+          <DestinationContentContainer>
+            <ContentItem>
+              <GatsbyImageWrapper>
+                <GatsbyImage image={getImage(destination.images.webp)!} alt="Moon" />
+              </GatsbyImageWrapper>
+            </ContentItem>
+            <ContentItem>
+              <DestinationDetailsContainer>
+                <DestinationBar>{renderDestinationBarItems()}</DestinationBar>
+                <DestinationDetailsHeading>{destination.name}</DestinationDetailsHeading>
+                <DetailsP>{destination.description}</DetailsP>
+                <DetailsStatsContainer>
+                  <DetailsStatsItem>
+                    <DetailsStatsHeading>Avg Distance</DetailsStatsHeading>
+                    <DetailsStatsP> {destination.distance}</DetailsStatsP>
+                  </DetailsStatsItem>
+                  <DetailsStatsItem>
+                    <DetailsStatsHeading>Est. Travel Time</DetailsStatsHeading>
+                    <DetailsStatsP>{destination.travel}</DetailsStatsP>
+                  </DetailsStatsItem>
+                </DetailsStatsContainer>
+              </DestinationDetailsContainer>
+            </ContentItem>
+          </DestinationContentContainer>
+        </DestinationContainer>
+      </Layout>
+    </>
   );
 };
 
