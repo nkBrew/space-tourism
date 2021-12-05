@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkspace_tourism=self.webpackChunkspace_tourism||[]).push([[218],{4909:function(e,t,u){u.r(t);var n=u(7294);t.default=function(){return n.createElement("div",null,n.createElement("h1",null,"404: Not Found"),n.createElement("p",null,"You just hit a route that doesn't exist... the sadness."))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-c483d0f20db46bf65005.js.map
